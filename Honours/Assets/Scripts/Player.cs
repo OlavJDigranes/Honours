@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     float jump = 5.0f; 
     float moveVel; 
     bool canJump; 
+    public int coinScore = 0; 
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,12 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "Collidable"){
             canJump = true; 
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D coin) {
+        if(coin.gameObject.tag == "Coin"){
+            coinScore++;  
         }
     }
 }
