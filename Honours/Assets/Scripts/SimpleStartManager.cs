@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleStartManager : MonoBehaviour
 {
+    public GameObject menuPanel; 
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +13,6 @@ public class SimpleStartManager : MonoBehaviour
 
     public void Run(){
         Time.timeScale = 1.0f; 
-
+        menuPanel.SetActive(false); 
     }
 }
