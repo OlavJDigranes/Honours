@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
+    //https://forum.unity.com/threads/randomize-scene-without-repeating.650182/
     public GameObject manager; 
     public List<int> availableScenes;
     public List<int> playedScenes;
@@ -24,6 +25,12 @@ public class Manager : MonoBehaviour
         int theSceneIndex = availableScenes[index]; // Access Scene
         availableScenes.RemoveAt(index);
         playedScenes.Add(theSceneIndex);
+
+        //Safety
+        if (availableScenes.Count < 1) {
+            availableScenes = playedScenes; // lazy, I know
+            playedScenes = new List<int>();
+        }
     }
 
     // Update is called once per frame
