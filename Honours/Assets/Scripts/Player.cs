@@ -39,11 +39,14 @@ public class Player : MonoBehaviour
             if(canJump)
             {
                 GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jump);
+                canJump = false; 
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        
+        if(col.gameObject.tag == "Collidable"){
+            canJump = true; 
+        }
     }
 }
