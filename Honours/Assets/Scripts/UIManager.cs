@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI infoOutBox; 
     public Player plr; 
 
+    //Buttons
+    public GameObject continueBtn; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,21 @@ public class UIManager : MonoBehaviour
 
         infoOutBox.text = " "; 
         p1 = GameObject.Find("Player").transform; 
+
+        //Functional
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            continueBtn.SetActive(false);
+        }
+
+        //Half-broken
+        if(SceneManager.GetActiveScene().buildIndex == 2){
+            
+        }
+
+        //Broken
+        if(SceneManager.GetActiveScene().buildIndex == 3){
+            
+        }
     }
 
     // Update is called once per frame
@@ -35,12 +53,20 @@ public class UIManager : MonoBehaviour
 
         //Half-broken
         if(SceneManager.GetActiveScene().buildIndex == 2){
-
+            
         }
 
         //Broken
         if(SceneManager.GetActiveScene().buildIndex == 3){
 
         }
+    }
+
+    private void Pause(){
+        Time.timeScale = 0.0f;
+    }
+
+    private void Continue(){
+        Time.timeScale = 1.0f;
     }
 }

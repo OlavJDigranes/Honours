@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    GameObject player; 
     float speed = 10.0f; 
     float jump = 5.0f; 
     float moveVel; 
@@ -22,6 +24,10 @@ public class Player : MonoBehaviour
         //Movevment
         moveVel = 0;
 
+        if(player.transform.position.y < -5){
+            ResetPlayer(); 
+        }
+
         //Left Right Movement
         if (Input.GetKey(KeyCode.A)) 
         {
@@ -39,10 +45,15 @@ public class Player : MonoBehaviour
         {
             if(canJump)
             {
-                GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jump);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
                 canJump = false; 
             }
         }
+    }
+
+    private void ResetPlayer(){
+        player.transform.position = Vector3.zero; 
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f); 
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
