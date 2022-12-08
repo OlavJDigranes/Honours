@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
     float jump = 5.0f; 
     float moveVel; 
     bool canJump; 
+
     public int coinScore = 0; 
+    public int aData = 0;
+    public int dData = 0;
+    public int spaceData = 0;
 
     // Start is called before the first frame update
     void Start()

@@ -21,16 +21,17 @@ public class Manager : MonoBehaviour
     }
 
     public void LoadNextScene(){
-        int index = UnityEngine.Random.Range(1, availableScenes.Count);
+        int index = UnityEngine.Random.Range(0, availableScenes.Count);
         int theSceneIndex = availableScenes[index]; // Access Scene
         availableScenes.RemoveAt(index);
         playedScenes.Add(theSceneIndex);
 
         //Safety
         if (availableScenes.Count < 1) {
-            availableScenes = playedScenes; // lazy, I know
-            playedScenes = new List<int>();
+            SceneManager.LoadScene(7); 
         }
+
+        SceneManager.LoadScene(theSceneIndex); 
     }
 
     // Update is called once per frame

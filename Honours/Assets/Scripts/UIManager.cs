@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
     //Buttons
     public GameObject continueBtn; 
 
+    private bool check1 = false; 
+    private bool check2 = false; 
+    private bool check3 = false; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,19 +27,7 @@ public class UIManager : MonoBehaviour
         p1 = GameObject.Find("Player").transform; 
 
         //Functional
-        if(SceneManager.GetActiveScene().buildIndex == 1){
-            continueBtn.SetActive(false);
-        }
-
-        //Half-broken
-        if(SceneManager.GetActiveScene().buildIndex == 2){
-            
-        }
-
-        //Broken
-        if(SceneManager.GetActiveScene().buildIndex == 3){
-            
-        }
+        continueBtn.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,7 +35,10 @@ public class UIManager : MonoBehaviour
     {
         //Functional
         if(SceneManager.GetActiveScene().buildIndex == 1){
-            if((p1.position.x > -2 && p1.position.x < 22) && plr.coinScore < 2){
+            if((p1.position.x > -2 && p1.position.x < 12) && plr.coinScore < 2){
+                infoOutBox.text = "Move left with A. Move right with D. Jump with Space"; 
+            }
+            if((p1.position.x > 12 && p1.position.x < 22) && plr.coinScore < 2){
                 infoOutBox.text = "Collect the coins"; 
             }
             if(p1.position.x > 22 && p1.position.x < 30){
@@ -53,12 +48,26 @@ public class UIManager : MonoBehaviour
 
         //Half-broken
         if(SceneManager.GetActiveScene().buildIndex == 2){
-            
+            if(check1 == false){
+                Pause(); 
+                continueBtn.SetActive(true); 
+                infoOutBox.text = "Get to the end and collect coins on the way"; 
+            }
         }
 
         //Broken
         if(SceneManager.GetActiveScene().buildIndex == 3){
+            if(check2 == false && p1.position.x > 25){
+                Pause(); 
+                continueBtn.SetActive(true); 
+                infoOutBox.text = "Remember to collect the coins"; 
+            }
 
+            if(check2 == true && check3 == false && p1.position.x > 12){
+                Pause(); 
+                continueBtn.SetActive(true); 
+                infoOutBox.text = "Hit the red box to exit";
+            }
         }
     }
 
@@ -66,7 +75,21 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0.0f;
     }
 
-    private void Continue(){
+    public void Continue(){
         Time.timeScale = 1.0f;
+        if(SceneManager.GetActiveScene().buildIndex == 2){
+            check1 = true; 
+            infoOutBox.text = " "; 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 3){
+            if(check2 == true){
+                check3 = true; 
+            }
+            if(check2 == false){
+                check2 = true; 
+            }
+            infoOutBox.text = " "; 
+        }
+        continueBtn.SetActive(false); 
     }
 }

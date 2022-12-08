@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Questionnaire3.unity
     guid: 8fefded3a7396a042bf6b4598ac69c6a
+  - enabled: 1
+    path: Assets/Scenes/Exit.unity
+    guid: bb1ac36428f3dc04ba71a3a2114eec84
   m_configObjects: {}

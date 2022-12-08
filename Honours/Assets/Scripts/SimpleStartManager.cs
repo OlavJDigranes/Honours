@@ -23,8 +23,10 @@ public class SimpleStartManager : MonoBehaviour
         seconds = 0; 
 
         path = getPath();
-        writer = new StreamWriter(path);
+        writer = new StreamWriter(path, true);
         writer.WriteLine("Time(S),CoinScore,LevelID"); 
+        writer.Flush();
+        writer.Close();
 
         GameObject p = GameObject.Find("Player"); 
         plr = p.GetComponent<Player>(); 
@@ -42,6 +44,7 @@ public class SimpleStartManager : MonoBehaviour
     }
 
     public void End(){
+        writer = new StreamWriter(path, true);
         writer.WriteLine(seconds + "," + plr.coinScore + "," + SceneManager.GetActiveScene().buildIndex); 
         writer.Flush();
         writer.Close();
