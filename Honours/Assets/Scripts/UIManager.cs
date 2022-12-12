@@ -57,13 +57,15 @@ public class UIManager : MonoBehaviour
 
         //Broken
         if(SceneManager.GetActiveScene().buildIndex == 3){
-            if(check2 == false && p1.position.x > 25){
+            Debug.Log("First Check");
+            if(check2 == false && p1.position.x > 15){
                 Pause(); 
                 continueBtn.SetActive(true); 
                 infoOutBox.text = "Remember to collect the coins"; 
             }
 
             if(check2 == true && check3 == false && p1.position.x > 12){
+                Debug.Log("Second Check"); 
                 Pause(); 
                 continueBtn.SetActive(true); 
                 infoOutBox.text = "Hit the red box to exit";
@@ -89,7 +91,6 @@ public class UIManager : MonoBehaviour
             if(check2 == false){
                 check2 = true; 
             }
-            infoOutBox.text = " "; 
             continueBtn.SetActive(true);
         }
     }

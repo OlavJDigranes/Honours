@@ -9,9 +9,8 @@ public class SimpleStartManager : MonoBehaviour
 {
     public GameObject menuPanel; 
     public Player plr; 
+    public Manager manager; 
 
-    private string path;
-    private StreamWriter writer;
     private float timer; 
     private int seconds; 
     private bool scene3Check = false; 
@@ -24,11 +23,8 @@ public class SimpleStartManager : MonoBehaviour
         timer = 0.0f;
         seconds = 0; 
 
-        path = getPath();
-        writer = new StreamWriter(path, true);
-        writer.WriteLine("Time(S),CoinScore,LevelID"); 
-        writer.Flush();
-        writer.Close();
+        GameObject empty = GameObject.Find("Manager"); 
+        manager = empty.GetComponent<Manager>();
 
         GameObject p = GameObject.Find("Player"); 
         plr = p.GetComponent<Player>(); 
@@ -59,10 +55,7 @@ public class SimpleStartManager : MonoBehaviour
     }
 
     public void End(){
-        writer = new StreamWriter(path, true);
-        writer.WriteLine(seconds + "," + plr.coinScore + "," + SceneManager.GetActiveScene().buildIndex); 
-        writer.Flush();
-        writer.Close();
+        manager.dataWriter.WriteLine(seconds + "," + plr.coinScore + "," + SceneManager.GetActiveScene().buildIndex); 
     }
 
     //https://forum.unity.com/threads/write-data-from-list-to-csv-file.643561/

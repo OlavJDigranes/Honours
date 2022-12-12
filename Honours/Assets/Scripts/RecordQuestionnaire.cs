@@ -13,28 +13,15 @@ public class RecordQuestionnaire : MonoBehaviour
     public TMP_Dropdown input2; 
     public TMP_Dropdown input3; 
 
-    private string path;
-    private StreamWriter writer;
-
     // Start is called before the first frame update
     void Start()
     {
         GameObject empty = GameObject.Find("Manager"); 
         manager = empty.GetComponent<Manager>(); 
-
-        path = getPath();
-        writer = new StreamWriter(path, true);
-        writer.WriteLine("Q1,Q2,Q3,ForScene"); 
-        writer.Flush();
-        writer.Close();
     }
 
     public void RecordData(){
-        writer = new StreamWriter(path, true);
-        writer.WriteLine((input1.value + 1) + "," + (input2.value + 1) + "," + (input3.value + 1) + "," + (SceneManager.GetActiveScene().buildIndex - 3)); 
-        writer.Flush();
-        writer.Close();
-
+        manager.qDataWriter.WriteLine((input1.value + 1) + "," + (input2.value + 1) + "," + (input3.value + 1) + "," + (SceneManager.GetActiveScene().buildIndex - 3)); 
         manager.LoadNextScene(); 
     }
 
