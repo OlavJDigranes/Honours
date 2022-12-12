@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     float jump = 5.0f; 
     float moveVel; 
     bool canJump; 
+    private AudioSource pling; 
 
     public int coinScore = 0; 
     public int aData = 0;
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pling = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -69,6 +71,9 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coin) {
         if(coin.gameObject.tag == "Coin"){
             coinScore++;  
+            if(SceneManager.GetActiveScene().buildIndex == 1){
+                pling.Play();
+            }
         }
     }
 }
