@@ -15,6 +15,7 @@ public class SimpleStartManager : MonoBehaviour
     private float timer; 
     private int seconds; 
     private bool scene3Check = false; 
+    private AudioSource btnClick; 
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,10 @@ public class SimpleStartManager : MonoBehaviour
 
         GameObject p = GameObject.Find("Player"); 
         plr = p.GetComponent<Player>(); 
+
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            btnClick = GetComponent<AudioSource>();
+        }
     }
 
     private void Update() {
@@ -47,6 +52,9 @@ public class SimpleStartManager : MonoBehaviour
         Time.timeScale = 1.0f;
         if(SceneManager.GetActiveScene().buildIndex != 3){
             menuPanel.SetActive(false); 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            btnClick.Play(); 
         }
     }
 
