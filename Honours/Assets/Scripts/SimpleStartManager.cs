@@ -14,6 +14,7 @@ public class SimpleStartManager : MonoBehaviour
     private StreamWriter writer;
     private float timer; 
     private int seconds; 
+    private bool scene3Check = false; 
     
     // Start is called before the first frame update
     void Start()
@@ -36,11 +37,17 @@ public class SimpleStartManager : MonoBehaviour
         timer += Time.deltaTime; 
         float sec = timer % 60;
         seconds = (int)sec; 
+        if(SceneManager.GetActiveScene().buildIndex == 3 && Input.GetKeyDown(KeyCode.Escape) && scene3Check == false){
+            menuPanel.SetActive(false);
+            scene3Check = true; 
+        }
     }
 
     public void Run(){
-        Time.timeScale = 1.0f; 
-        menuPanel.SetActive(false); 
+        Time.timeScale = 1.0f;
+        if(SceneManager.GetActiveScene().buildIndex != 3){
+            menuPanel.SetActive(false); 
+        }
     }
 
     public void End(){

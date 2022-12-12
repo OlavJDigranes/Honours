@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 2){
             check1 = true; 
             infoOutBox.text = " "; 
+            continueBtn.SetActive(false);
         }
         if(SceneManager.GetActiveScene().buildIndex == 3){
             if(check2 == true){
@@ -89,7 +90,7 @@ public class UIManager : MonoBehaviour
                 check2 = true; 
             }
             infoOutBox.text = " "; 
+            continueBtn.SetActive(true);
         }
-        continueBtn.SetActive(false); 
     }
 }
