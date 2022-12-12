@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pling = GetComponent<AudioSource>(); 
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            pling = GetComponent<AudioSource>(); 
+        }
     }
 
     // Update is called once per frame
