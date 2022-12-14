@@ -21,8 +21,18 @@ public class RecordQuestionnaire : MonoBehaviour
     }
 
     public void RecordData(){
-        manager.qDataWriter.WriteLine((input1.value + 1) + "," + (input2.value + 1) + "," + (input3.value + 1) + "," + (SceneManager.GetActiveScene().buildIndex - 3)); 
-        manager.LoadNextScene(); 
+        //manager.dataWriter.WriteLine((input1.value + 1) + "," + (input2.value + 1) + "," + (input3.value + 1) + "," + (SceneManager.GetActiveScene().buildIndex - 3)); 
+        //manager.LoadNextScene(); 
+        if(SceneManager.GetActiveScene().buildIndex == 4){
+            manager.level1Data = (input1.value + 1).ToString() + "," + (input2.value + 1).ToString() + "," + (input3.value + 1).ToString(); 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 5){
+            manager.level2Data = (input1.value + 1).ToString() + "," + (input2.value + 1).ToString() + "," + (input3.value + 1).ToString(); 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 6){
+            manager.level3Data = (input1.value + 1).ToString() + "," + (input2.value + 1).ToString() + "," + (input3.value + 1).ToString(); 
+        }
+        manager.LoadNextScene();
     }
 
     //https://forum.unity.com/threads/write-data-from-list-to-csv-file.643561/

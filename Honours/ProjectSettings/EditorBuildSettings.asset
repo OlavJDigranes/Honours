@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Exit.unity
     guid: bb1ac36428f3dc04ba71a3a2114eec84
+  - enabled: 1
+    path: Assets/Scenes/GDPR.unity
+    guid: 1c21ba9607250ef43a2025e0e824e22c
   m_configObjects: {}

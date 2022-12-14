@@ -14,9 +14,10 @@ public class Exit : MonoBehaviour
     public void ExitFunction(){
         Debug.Log("EXIT");
         
-        manager.qDataWriter.Flush();
-        manager.qDataWriter.Close(); 
-
+        //manager.qDataWriter.Flush();
+        //manager.qDataWriter.Close(); 
+        
+        manager.dataWriter.WriteLine(manager.GDPR + "," + manager.level1PlrData + "," + manager.level1Data + "," + manager.level2PlrData + "," + manager.level2Data + "," + manager.level3PlrData + "," + manager.level3Data); 
         manager.dataWriter.Flush(); 
         manager.dataWriter.Close(); 
 

@@ -12,7 +12,7 @@ public class SimpleStartManager : MonoBehaviour
     public Manager manager; 
 
     private float timer; 
-    private int seconds; 
+    public int seconds; 
     private bool scene3Check = false; 
     private AudioSource btnClick; 
     
@@ -39,6 +39,7 @@ public class SimpleStartManager : MonoBehaviour
         float sec = timer % 60;
         seconds = (int)sec; 
         if(SceneManager.GetActiveScene().buildIndex == 3 && Input.GetKeyDown(KeyCode.Escape) && scene3Check == false){
+            Time.timeScale = 1.0f; 
             menuPanel.SetActive(false);
             scene3Check = true; 
         }
@@ -55,7 +56,16 @@ public class SimpleStartManager : MonoBehaviour
     }
 
     public void End(){
-        manager.dataWriter.WriteLine(seconds + "," + plr.coinScore + "," + SceneManager.GetActiveScene().buildIndex); 
+        //manager.dataWriter.WriteLine(seconds + "," + plr.coinScore + "," + SceneManager.GetActiveScene().buildIndex); 
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            manager.level1PlrData = seconds.ToString() + "," + plr.coinScore.ToString() + "," + plr.aData.ToString() + "," + plr.dData.ToString() + "," + plr.spaceData.ToString() + "," + plr.escData.ToString(); 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 2){
+            manager.level2PlrData = seconds.ToString() + "," + plr.coinScore.ToString() + "," + plr.aData.ToString() + "," + plr.dData.ToString() + "," + plr.spaceData.ToString() + "," + plr.escData.ToString(); 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 3){
+            manager.level3PlrData = seconds.ToString() + "," + plr.coinScore.ToString() + "," + plr.aData.ToString() + "," + plr.dData.ToString() + "," + plr.spaceData.ToString() + "," + plr.escData.ToString(); 
+        }
     }
 
     //https://forum.unity.com/threads/write-data-from-list-to-csv-file.643561/

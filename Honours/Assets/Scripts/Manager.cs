@@ -17,8 +17,16 @@ public class Manager : MonoBehaviour
     private string dataPath;
     public StreamWriter dataWriter;
 
-    private string qDataPath;
-    public StreamWriter qDataWriter;
+    public string GDPR; 
+    public string level1Data; 
+    public string level2Data; 
+    public string level3Data; 
+    public string level1PlrData; 
+    public string level2PlrData; 
+    public string level3PlrData; 
+
+    //private string qDataPath;
+    //public StreamWriter qDataWriter;
 
     // Start is called before the first frame update
     void Start()
@@ -30,13 +38,15 @@ public class Manager : MonoBehaviour
 
         dataPath = getDataPath();
         dataWriter = new StreamWriter(dataPath, true);
-        dataWriter.WriteLine("Time(S),CoinScore,LevelID"); 
+        dataWriter.WriteLine("GDPR_PERM_1,GDPR_PERM_2,GDPR_PERM_3,Time(S)_1,CoinScore_1,A_Pressed_1,D_Pressed_1,Space_Pressed_1,ESC_Pressed_1,Q1_1,Q2_1,Q3_1,Time(S)_2,CoinScore_2,A_Pressed_2,D_Pressed_2,Space_Pressed_2,ESC_Pressed_2,Q1_2,Q2_2,Q3_2,Time(S)_3,CoinScore_3,A_Pressed_3,D_Pressed_3,Space_Pressed_3,ESC_Pressed_3,Q1_3,Q2_3,Q3_3"); 
 
-        qDataPath = getQDataPath();
-        qDataWriter = new StreamWriter(qDataPath, true);
-        qDataWriter.WriteLine("Q1,Q2,Q3,ForScene"); 
+        //qDataPath = getQDataPath();
+        //qDataWriter = new StreamWriter(qDataPath, true);
+        //qDataWriter.WriteLine("Q1,Q2,Q3,ForScene"); 
 
-        LoadNextScene();
+        SceneManager.LoadScene(8);
+
+        //LoadNextScene();
     }
 
     public void LoadNextScene(){

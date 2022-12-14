@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public int aData = 0;
     public int dData = 0;
     public int spaceData = 0;
+    public int escData = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 1){
             pling = GetComponent<AudioSource>(); 
         }
+        coinScore = 0;
+        aData = 0;
+        dData = 0; 
+        spaceData = 0; 
+        escData = 0; 
     }
 
     // Update is called once per frame
@@ -56,6 +62,17 @@ public class Player : MonoBehaviour
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
                 canJump = false; 
             }
+            spaceData++; 
+        }
+
+        if(Input.GetKeyDown(KeyCode.A)){
+            aData++;
+        }
+        if(Input.GetKeyDown(KeyCode.D)){
+            dData++;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            escData++;
         }
     }
 
