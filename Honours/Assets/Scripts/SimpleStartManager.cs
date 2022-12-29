@@ -13,6 +13,8 @@ public class SimpleStartManager : MonoBehaviour
 
     private float timer; 
     public int seconds; 
+    private bool scene1Check = false; 
+    private bool scene2Check = false; 
     private bool scene3Check = false; 
     private AudioSource btnClick; 
     
@@ -38,6 +40,16 @@ public class SimpleStartManager : MonoBehaviour
         timer += Time.deltaTime; 
         float sec = timer % 60;
         seconds = (int)sec; 
+        if(SceneManager.GetActiveScene().buildIndex == 1 && Input.GetKeyDown(KeyCode.Escape) && scene1Check == false){
+            Time.timeScale = 1.0f; 
+            menuPanel.SetActive(false);
+            scene1Check = true; 
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 2 && Input.GetKeyDown(KeyCode.Escape) && scene2Check == false){
+            Time.timeScale = 1.0f; 
+            menuPanel.SetActive(false);
+            scene2Check = true; 
+        }
         if(SceneManager.GetActiveScene().buildIndex == 3 && Input.GetKeyDown(KeyCode.Escape) && scene3Check == false){
             Time.timeScale = 1.0f; 
             menuPanel.SetActive(false);

@@ -45,8 +45,6 @@ public class Manager : MonoBehaviour
         //qDataWriter.WriteLine("Q1,Q2,Q3,ForScene"); 
 
         SceneManager.LoadScene(8);
-
-        //LoadNextScene();
     }
 
     public void LoadNextScene(){
