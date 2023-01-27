@@ -10,6 +10,7 @@ public class SimpleStartManager : MonoBehaviour
     public GameObject menuPanel; 
     public Player plr; 
     public Manager manager; 
+    public int tenSecCheck = 0; //If ithis value is 1 ten seconds passed at the start
 
     private float timer; 
     public int seconds; 
@@ -55,6 +56,11 @@ public class SimpleStartManager : MonoBehaviour
             menuPanel.SetActive(false);
             scene3Check = true; 
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 3 && seconds >= 10 && tenSecCheck == 0){
+            tenSecCheck = 1; 
+            menuPanel.SetActive(false); 
+        }
     }
 
     public void Run(){
@@ -77,6 +83,7 @@ public class SimpleStartManager : MonoBehaviour
         }
         if(SceneManager.GetActiveScene().buildIndex == 3){
             manager.level3PlrData = seconds.ToString() + "," + plr.coinScore.ToString() + "," + plr.aData.ToString() + "," + plr.dData.ToString() + "," + plr.spaceData.ToString() + "," + plr.escData.ToString(); 
+            manager.level3TenSecondCheck = tenSecCheck.ToString();
         }
     }
 

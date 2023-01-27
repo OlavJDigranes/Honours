@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     public string level1PlrData; 
     public string level2PlrData; 
     public string level3PlrData; 
+    public string level3TenSecondCheck; 
 
     //private string qDataPath;
     //public StreamWriter qDataWriter;
@@ -38,7 +39,7 @@ public class Manager : MonoBehaviour
 
         dataPath = getDataPath();
         dataWriter = new StreamWriter(dataPath, true);
-        dataWriter.WriteLine("GDPR_PERM_1,GDPR_PERM_2,GDPR_PERM_3,Time(S)_1,CoinScore_1,A_Pressed_1,D_Pressed_1,Space_Pressed_1,ESC_Pressed_1,Q1_1,Q2_1,Q3_1,Time(S)_2,CoinScore_2,A_Pressed_2,D_Pressed_2,Space_Pressed_2,ESC_Pressed_2,Q1_2,Q2_2,Q3_2,Time(S)_3,CoinScore_3,A_Pressed_3,D_Pressed_3,Space_Pressed_3,ESC_Pressed_3,Q1_3,Q2_3,Q3_3"); 
+        dataWriter.WriteLine("GDPR_PERM_1,GDPR_PERM_2,GDPR_PERM_3,Time(S)_1,CoinScore_1,A_Pressed_1,D_Pressed_1,Space_Pressed_1,ESC_Pressed_1,Q1_1,Q2_1,Q3_1,Time(S)_2,CoinScore_2,A_Pressed_2,D_Pressed_2,Space_Pressed_2,ESC_Pressed_2,Q1_2,Q2_2,Q3_2,Time(S)_3,CoinScore_3,A_Pressed_3,D_Pressed_3,Space_Pressed_3,ESC_Pressed_3,Q1_3,Q2_3,Q3_3,Broken_Scene_Ten_Second_Check,Level_1,Level_2,Level_3"); 
 
         //qDataPath = getQDataPath();
         //qDataWriter = new StreamWriter(qDataPath, true);
